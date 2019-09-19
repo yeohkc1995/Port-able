@@ -1,0 +1,254 @@
+#:kivy 1.11.1
+
+<MyLayout>:
+    FloatLayout:
+        Image:
+            pos_hint: {'x': 0.02, 'top': 1}
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 0.9, 0.1
+            source: "Title.png"
+        Image:
+            pos_hint: {'x': 0.92, 'y': 0.89}
+            size_hint_x: 0.08
+            size_hint_y: None
+            height: self.width
+            source: "TeamLogo.png"
+
+        Image:
+            pos_hint: {'right': 1, 'top': 0.805}
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 0.37, 0.285
+            source: "blueborder.jpeg"
+
+        Label:
+            id: scanningLabel
+            text: "Scanner De-activated..."
+            font_name: "DSDigi"
+            text_size: self.size
+            halign: 'left'
+            valign: 'bottom'
+            font_size: 34
+            pos_hint: {'x': 0.66, 'y': 0.72}
+            size_hint: 0.25, 0.05
+            color: 155,40,40,1
+
+        Label:
+            id: containerType
+            text: 'Type: '
+            font_name: "DSDigi"
+            text_size: self.size
+            halign: 'left'
+            valign: 'bottom'
+            font_size: 34
+            pos_hint: {'x': 0.66, 'y': 0.62}
+            size_hint: 0.4, 0.05
+            color: 1,1,1,1
+
+        Label:
+            text: 'Time Elapsed (s): 5'
+            font_name: "DSDigi"
+            text_size: self.size
+            halign: 'left'
+            valign: 'bottom'
+            font_size: 34
+            pos_hint: {'x': 0.66, 'y': 0.57}
+            size_hint: 0.4, 0.05
+            color: 1,1,1,1
+
+        Label:
+            id: containerID
+            text: "Container ID: "
+            font_name: "DSDigi"
+            text_size: self.size
+            halign: 'left'
+            valign: 'bottom'
+            font_size: 34
+            pos_hint: {'x': 0.66, 'y': 0.67}
+            size_hint: 0.4, 0.05
+            color: 1,1,1,1
+
+
+        Button:
+            text: "Load New File"
+            font_name: "DSISO"
+            font_size: 24
+            background_normal: "ButtonNormal.png"
+            background_down: "ButtonDown.png"
+            pos_hint: {'right': 0.98, 'top': 0.88}
+            size_hint_y: 0.07
+            size_hint_x: None
+            width: self.height*3
+            on_release: root.show_load()
+        Label:
+            text: "Current File: container.csv"
+            font_name: "DSISO"
+            text_size: self.size
+            halign: 'right'
+            valign: 'bottom'
+            font_size: 15
+            pos_hint: {'right': 0.98, 'y': 0.895}
+            size_hint: 0.25, 0.05
+            color: 1,1,1,1
+        Label:
+            text: "Battery: 80%"
+            font_name: "Mylodon"
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+            font_size: 20
+            pos_hint: {'x': 0.02, 'top': 0.93}
+            size_hint: 0.3, 0.07
+            color: 0,0.7,0,1
+        Image:
+            pos_hint: {'x': 0, 'top': 0.89}
+            size_hint: 0.1, 0.1
+            source: "BatteryIcon.png"
+        ToggleButton:
+            group: "view"
+            pos_hint: {'x': 0.21, 'top': 0.88}
+            text: "Normal View"
+            font_name: "DSISO"
+            font_size: 24
+            background_normal: "ButtonNormal.png"
+            background_down: "ButtonDown.png"
+            size_hint_y: 0.07
+            size_hint_x: None
+            width: self.height*3
+            on_press: grid.visible = False
+        ToggleButton:
+            group: "view"
+            pos_hint: {'x': 0.335, 'top': 0.88}
+            text: "Grid View"
+            font_name: "DSISO"
+            font_size: 24
+            background_normal: "ButtonNormal.png"
+            background_down: "ButtonDown.png"
+            size_hint_y: 0.07
+            size_hint_x: None
+            width: self.height*3
+            on_press: grid.visible = True
+        ToggleButton:
+            id: qrToggle
+            group: "view"
+            background_normal: "QRNormal.png"
+            background_down: "QRDown.png"
+            pos_hint: {'x': 0.58, 'top': 0.88}
+            size_hint_y: 0.07
+            size_hint_x: None
+            width: self.height
+            on_press: grid.visible = False
+            on_press: root.toggleBtn()
+        Camera:
+            id: camera
+            pos_hint: {'x': 0.02, 'y': 0.02}
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 0.6, 0.77
+            resolution: (640, 480)
+            play: True
+        Image:
+            id: grid
+            visible: False
+            opacity: 1 if self.visible else 0
+            pos_hint: {'x': 0.02, 'y': 0.02}
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 0.6, 0.78
+            source: "Grid.png"
+
+        Image:
+            pos_hint: {'right': 1, 'y': 0.08}
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 0.37, 0.45
+            source: "blueborder.jpeg"
+
+
+        Label:
+            text: "Task Record"
+            font_name: "DSDigi"
+            text_size: self.size
+            halign: 'left'
+            valign: 'top'
+            font_size: 34
+            pos_hint: {'x': 0.66, 'y': 0.405}
+            size_hint: 0.25, 0.07
+            color: 1,0.68,0,1
+
+        Image:
+            pos_hint: {'x': 0.65, 'y': 0.2}
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 0.32, 0.22
+            source: "Table.png"
+        Button:
+            text: "Delete Last"
+            font_name: "DSISO"
+            font_size: 24
+            pos_hint: {'x': 0.68, 'y': 0.02}
+            background_normal: "ButtonNormal.png"
+            background_down: "ButtonDown.png"
+            size_hint_y: 0.07
+            size_hint_x: None
+            width: self.height*3
+        Button:
+            text: "Reset"
+            font_name: "DSISO"
+            font_size: 24
+            pos_hint: {'right': 0.94, 'y': 0.02}
+            background_normal: "ButtonNormal.png"
+            background_down: "ButtonDown.png"
+            size_hint_y: 0.07
+            size_hint_x: None
+            width: self.height*3
+
+
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserIconView
+            id: filechooser
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                font_name: "DSISO"
+                on_release: root.cancel()
+
+            Button:
+                text: "Load"
+                font_name: "DSISO"
+                on_release: root.load(filechooser.path, filechooser.selection)
+
+<SaveDialog>:
+    text_input: text_input
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            on_selection: text_input.text = self.selection and self.selection[0] or ''
+
+        TextInput:
+            id: text_input
+            size_hint_y: None
+            height: 30
+            multiline: False
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Save"
+                on_release: root.save(filechooser.path, text_input.text)
